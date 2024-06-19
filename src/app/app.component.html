@@ -1,1 +1,9 @@
-<h1 class="center">Practice Time!</h1>
+<div class="center">
+  <app-header />
+  <app-user-input (calculate)="handleClickCalculate($event)" />
+  @if(investmentResults) {
+  <app-investment-results [results]="investmentResults" />
+  } @else {
+  <p>Please enter some values and press "Calculate"</p>
+  }
+</div>
