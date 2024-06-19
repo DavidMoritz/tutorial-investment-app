@@ -1,5 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { InvestmentService } from '../investment.service';
 
 export interface InvestmentResultsData {
   year: number;
@@ -17,5 +18,7 @@ export interface InvestmentResultsData {
   styleUrl: './investment-results.component.css'
 })
 export class InvestmentResultsComponent {
-  results = input.required<InvestmentResultsData[]>();
+  private investmentService = inject(InvestmentService);
+
+  results = computed(() => this.investmentService.results());
 }

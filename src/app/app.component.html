@@ -1,9 +1,5 @@
 <div class="center">
   <app-header />
-  <app-user-input (calculate)="handleClickCalculate($event)" />
-  @if(investmentResults) {
-  <app-investment-results [results]="investmentResults" />
-  } @else {
-  <p>Please enter some values and press "Calculate"</p>
-  }
+  <app-user-input />
+  <app-investment-results />
 </div>

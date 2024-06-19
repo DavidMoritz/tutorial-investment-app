@@ -1,3 +1,4 @@
+@if(results()) {
 <table>
   <thead>
     <tr>
@@ -20,3 +21,7 @@
     }
   </tbody>
 </table>
+<app-investment-results />
+} @else {
+<p>Please enter some values and press "Calculate"</p>
+}

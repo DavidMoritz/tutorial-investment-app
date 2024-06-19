@@ -1,5 +1,6 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { InvestmentService } from '../investment.service';
 
 export interface InvestmentDetails {
   initialInvestment: number;
@@ -15,14 +16,14 @@ export interface InvestmentDetails {
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  calculate = output<InvestmentDetails>();
+  private investmentService = inject(InvestmentService);
   initialInvestmentInput = signal('');
   annualInvestmentInput = signal('');
-  expectedReturnInput = signal('');
-  durationInput = signal('');
+  expectedReturnInput = signal('5');
+  durationInput = signal('10');
 
   onPressCalculate() {
-    this.calculate.emit({
+    this.investmentService.calculateInvestmentResults({
       initialInvestment: Number(this.initialInvestmentInput()),
       duration: Number(this.durationInput()),
       expectedReturn: Number(this.expectedReturnInput()),
